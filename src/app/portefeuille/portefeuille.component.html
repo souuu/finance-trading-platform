@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-5">
+      <div class="card card-user">
+        <div class="image">
+          <img src="assets/img/trading.jpg" alt="..."/>
+        </div>
+        <div class="content" style="min-height: 1px;">
+          <div class="author">
+            <img class="avatar border-white" src="assets/img/wallet.png" alt="..."/>
+            <h4 class="title">Mon portefeuille<br />
+            </h4>
+          </div>
+        </div>
+        <hr>
+        <div class="text-center">
+          <div class="row">
+            <div class="col-md-12" style="padding-top: 20px;padding-bottom: 20px;">
+              <h4 class="title" style="color: green">50.000 DT | +10% </h4>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 20px;">
+              <button class="btn btn-success">Charger mon compte</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-7">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Mes Valeurs</h4>
+        </div>
+        <div class="content">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="content table-responsive table-full-width">
+                  <table class="table table-striped">
+                    <thead>
+                    <tr>
+                      <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let row of tableData1.dataRows">
+                      <td *ngFor="let cell of row">{{cell}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,251 @@
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <div class="icon-big icon-success text-center">
+                                    <i class="ti-exchange-vertical"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="numbers">
+                                    <p>Performance</p>
+                                    +10%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats" routerLink="/stats" style="cursor: pointer">
+                                <i class="ti-reload"></i> Voir les statistiques
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <div class="icon-big icon-warning text-center">
+                                    <i class="ti-wallet"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="numbers">
+                                    <p>Portefeuille</p>
+                                    50.000 DT
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats" routerLink="/portefeuille" style="cursor: pointer">
+                                <i class="ti-calendar"></i> Voir mon portefeuille
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <div class="icon-big icon-info text-center">
+                                    <i class="ti-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="numbers">
+                                    <p>Ordres en cours</p>
+                                    5
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats" routerLink="/historique" style="cursor: pointer;">
+                                <i class="ti-timer"></i> Voir mon historique
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <div class="icon-big icon-success text-center">
+                                    <i class="ti-stats-up"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="numbers">
+                                    <p>Cours</p>
+                                    +100
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats" routerLink="/cours" style="cursor: pointer">
+                                <i class="ti-reload"></i> Voir tout les cours
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Users Behavior</h4>
+                        <p class="category">24 Hours performance</p>
+                    </div>
+                    <div class="content">
+                        <div id="chartHours" class="ct-chart"></div>
+                        <div class="footer">
+                            <div class="chart-legend">
+                                <i class="fa fa-circle text-info"></i> Open
+                                <i class="fa fa-circle text-danger"></i> Click
+                                <i class="fa fa-circle text-warning"></i> Click Second Time
+                            </div>
+                            <hr>
+                            <div class="stats">
+                                <i class="ti-reload"></i> Updated 3 minutes ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card ">
+                    <div class="header">
+                        <h4 class="title">Statistiques - 30 jours</h4>
+                        <p class="category">Vos statistiques pendant le dernier mois</p>
+                    </div>
+                    <div class="content">
+                        <div id="chartActivity" class="ct-chart"></div>
+                        <div class="footer">
+                            <hr>
+                            <div class="stats" routerLink="/stats" style="cursor: pointer">
+                                <i class="ti-stats-up"></i> Voir tout les statistiques
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Historique</h4>
+                        <p class="category">Vos derniers ordres</p>
+                    </div>
+                    <div class="content">
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let row of tableData1.dataRows">
+                                    <td *ngFor="let cell of row">{{cell}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer">
+                            <hr>
+                            <div class="stats" routerLink="/historique" style="cursor: pointer">
+                                <i class="ti-view-list-alt"></i> Voir tout mon historique
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Cotations</h4>
+                        <p class="category">Les cotations disponibles</p>
+                    </div>
+                    <div class="content">
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th *ngFor="let cell of tableData2.headerRow">{{ cell }}</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let row of tableData2.dataRows">
+                                    <td *ngFor="let cell of row">{{cell}}</td>
+                                    <td>
+                                        <button class="btn btn-success" (click)="open()">Acheter</button>
+                                        <button class="btn btn-danger">Vendre</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer">
+                            <hr>
+                            <div class="stats" routerLink="/cours" style="cursor: pointer">
+                                <i class="ti-view-list-alt"></i> Voir tout les cours sur la plateforme
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Actualités</h4>
+                        <p class="category">Les dernières actualités dans la bourse tunisienne</p>
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-4" *ngFor="let i of[1,2,3,4,5,6]">
+                                <div class="item-news horizental-flex">
+                                    <img src="../../assets/img/news.jpg" class="news-img">
+                                    <div class="vertical-flex" style="margin-left: 10px;">
+                                        <h4 class="title">L’UIB et PROPARCO, partenaires des PME en Tunisie</h4>
+                                        <p class="category">Résolument engagée dans la mise en œuvre de sa stratégie de croissance sur le marché des entreprises, l’Union Internationale de Banques (UIB) ...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr>
+                            <div class="stats" routerLink="/news" style="cursor: pointer">
+                                <i class="ti-view-list-alt"></i> Voir toutes les actualités
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>

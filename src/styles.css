@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+.horizental-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-between {
+    justify-content: space-between;
+}
+
+.flex-center {
+    align-items: center;
+}
+
+.news-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.item-news {
+    margin-bottom: 20px;
+}
+
+.fade {
+    opacity:1;
+}
+.fade.in {
+    opacity: 1;
+}
+.modal.in .modal-dialog {
+    -webkit-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.modal-backdrop .fade .in {
+    opacity: 0.5 !important;
+}
+
+
+.modal-backdrop.fade {
+    opacity: 0.5 !important;
+}
+
+@media (min-width: 768px){
+    .modal-dialog {
+        margin: 80px auto !important;
+    }
+}
+
+.login-page {
+    width: 100% !important;
+}

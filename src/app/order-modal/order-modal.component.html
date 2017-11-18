@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h4 class="modal-title">Ordre d'achat</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Valeur</label>
+        <input type="text" class="form-control border-input" disabled placeholder="Company" value="AMEN BANK">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Nombre d'actions</label>
+        <input type="text" class="form-control border-input" value="25">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label>Type</label>
+      <div class="radio">
+        <input type="radio" name="radio1" id="radio1" value="option1">
+        <label for="radio1">
+          Au marché
+        </label>
+      </div>
+      <div class="radio">
+        <input type="radio" name="radio1" id="radio2" [checked]="coursLimite" (change)="coursLimite = !coursLimite">
+        <label for="radio1">
+          A cours limité
+        </label>
+      </div>
+      <input type="text" class="form-control border-input" placeholder="cours" *ngIf="coursLimite">
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <button type="button" class="btn btn-success" (click)="activeModal.close('Close click')">Acheter</button>
+</div>

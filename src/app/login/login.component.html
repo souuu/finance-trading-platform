@@ -1,0 +1,136 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="logo-sw text-center">
+        <a routerLink="/" class="simple-text" style="
+    color: #66615B !important;">
+          <img src="../../assets/img/sw-logo.png" style="width: 75px;">
+          SW Trading
+        </a>
+      </div>
+      <div class="card" *ngIf="registerItem">
+        <div class="header">
+          <h4 class="title">Inscription</h4>
+        </div>
+        <div class="content">
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control border-input" placeholder="Username">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control border-input" placeholder="Email">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control border-input">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input type="password" class="form-control border-input">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control border-input" placeholder="Company" value="Chet">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control border-input" placeholder="Last Name" value="Faker">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" class="form-control border-input" placeholder="Home Address" value="Melbourne, Australia">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>City</label>
+                  <input type="text" class="form-control border-input" placeholder="City" value="Melbourne">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Country</label>
+                  <input type="text" class="form-control border-input" placeholder="Country" value="Australia">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Postal Code</label>
+                  <input type="number" class="form-control border-input" placeholder="ZIP Code">
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-info btn-fill btn-wd">Register</button>
+              <span style="margin-left: 10px;"><a style="cursor:pointer;" (click)="loginItem=true;registerItem=false;">J'ai un compte</a> </span>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+      <div class="card" *ngIf="loginItem">
+        <div class="header">
+          <h4 class="title">S'authentifier</h4>
+        </div>
+        <div class="content">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control border-input" placeholder="Username">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control border-input">
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-info btn-fill btn-wd" (click)="login()">Login</button>
+              <span style="margin-left: 10px;"><a style="cursor:pointer;" (click)="loginItem=false;registerItem=true;">Inscription</a> </span>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
