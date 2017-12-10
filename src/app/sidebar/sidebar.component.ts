@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {GetUser} from "../core/user.model";
+import {BusinessService} from "../core/business.service";
 
 declare var $:any;
 
@@ -13,6 +15,7 @@ export interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: 'dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
     { path: 'portefeuille', title: 'Portefeuille',  icon:'ti-wallet', class: '' },
+    { path: 'orders', title: 'Orders',  icon:'ti-wallet', class: '' },
     { path: 'cours', title: 'Cours',  icon:'ti-exchange-vertical', class: '' },
     { path: 'historique', title: 'Historique',  icon:'ti-view-list-alt', class: '' },
     { path: 'stats', title: 'Statistiques',  icon:'ti-panel', class: '' },
@@ -27,9 +30,13 @@ export const ROUTES: RouteInfo[] = [
 })
 
 export class SidebarComponent implements OnInit {
+    user:GetUser;
     public menuItems: any[];
-    constructor(private router:Router) {}
+    constructor(private router:Router,private businessService:BusinessService) {}
     ngOnInit() {
+        this.businessService.getUser().then(data=> {
+            this.user=data.user;
+        });
         this.menuItems = ROUTES.filter(menuItem => menuItem);
     }
     isNotMobileMenu(){

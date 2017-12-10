@@ -12,7 +12,7 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Performance</p>
-                                    +10%
+                                    {{user.portfolioperformance}}
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Portefeuille</p>
-                                    50.000 DT
+                                    {{user.portfoliobalance}} DT
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Ordres en cours</p>
-                                    5
+                                    {{numberCours}}
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Cours</p>
-                                    +100
+                                    {{cours.length}}
                                 </div>
                             </div>
                         </div>
@@ -195,10 +195,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr *ngFor="let row of tableData2.dataRows">
+                                <tr *ngFor="let row of tableData2.dataRows;let i=index">
                                     <td *ngFor="let cell of row">{{cell}}</td>
                                     <td>
-                                        <button class="btn btn-success" (click)="open()">Acheter</button>
+                                        <button class="btn btn-success" (click)="open(row[i])">Acheter</button>
                                         <button class="btn btn-danger">Vendre</button>
                                     </td>
                                 </tr>

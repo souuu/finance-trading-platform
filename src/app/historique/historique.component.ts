@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BusinessService} from "../core/business.service";
+import {History} from "../core/user.model";
 declare interface TableData {
     headerRow: string[];
     dataRows: string[][];
@@ -12,25 +14,28 @@ declare interface TableData {
 export class HistoriqueComponent implements OnInit {
 
     public tableData1: TableData;
+    history:History[];
 
-  constructor() { }
+  constructor(private businessService:BusinessService) { }
 
   ngOnInit() {
+      this.businessService.getHistory().then(data=> {
+          this.history=data.historiques;
+          for (let i=0;i<data.historiques.length;i++){
+
+                  let table=[];
+                  table.push(this.history[i].valeur);
+                  table.push(this.history[i].va);
+                  table.push(this.history[i].type);
+                  table.push(this.history[i].status);
+                  table.push(this.history[i].timestamp);
+                  this.tableData1.dataRows.push(table);
+
+          }
+      });
       this.tableData1 = {
-          headerRow: [ 'Valeur','V/A', 'Quantité', 'Type', 'Status'],
+          headerRow: [ 'Valeur','V/A', 'Type', 'Status','Date'],
           dataRows: [
-              ['AMEN BANK','Vente', '25 actions', 'Au marché', 'En attente'],
-              ['BANQUE ATTIJARI DE TUNIS','Vente', '45 actions', 'A cours limité', 'En Exécution'],
-              ['BANQUE DE HABITAT','Achat', '30 actions', 'Au marché', 'En attente'],
-              ['BANQUE NATIONALE AGRICOLE','Achat', '25 actions', 'Au marché', 'En attente'],
-              ['AMEN BANK','Vente', '25 actions', 'Au marché', 'En attente'],
-              ['BANQUE ATTIJARI DE TUNIS','Vente', '45 actions', 'A cours limité', 'En Exécution'],
-              ['BANQUE DE HABITAT','Achat', '30 actions', 'Au marché', 'En attente'],
-              ['BANQUE NATIONALE AGRICOLE','Achat', '25 actions', 'Au marché', 'En attente'],
-              ['AMEN BANK','Vente', '25 actions', 'Au marché', 'En attente'],
-              ['BANQUE ATTIJARI DE TUNIS','Vente', '45 actions', 'A cours limité', 'En Exécution'],
-              ['BANQUE DE HABITAT','Achat', '30 actions', 'Au marché', 'En attente'],
-              ['BANQUE NATIONALE AGRICOLE','Achat', '25 actions', 'Au marché', 'En attente']
           ]
       };
   }

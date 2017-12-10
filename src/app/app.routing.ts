@@ -14,6 +14,7 @@ import {HistoriqueComponent} from "./historique/historique.component";
 import {NewsComponent} from "./news/news.component";
 import {StatsComponent} from "./stats/stats.component";
 import {LoginComponent} from "./login/login.component";
+import {OrdersComponent} from "./orders/orders.component";
 
 export const AppRoutes: Routes = [
     {
@@ -52,5 +53,9 @@ export const AppRoutes: Routes = [
     {
         path: 'stats',
         component: StatsComponent
+    },
+    {
+        path: 'orders',
+        component: OrdersComponent
     }
 ];

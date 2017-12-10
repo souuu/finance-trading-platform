@@ -9,13 +9,19 @@
     <div class="col-md-5">
       <div class="form-group">
         <label>Valeur</label>
-        <input type="text" class="form-control border-input" disabled placeholder="Company" value="AMEN BANK">
+        <input type="text" class="form-control border-input" disabled placeholder="Company" [(ngModel)]="nom">
+
+        <label>Ouverture</label>
+        <input type="text" class="form-control border-input" disabled placeholder="Company" [(ngModel)]="ouverture">
+
+        <label>Dernier Cours</label>
+        <input type="text" class="form-control border-input" disabled placeholder="Company" [(ngModel)]="dernier">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label>Nombre d'actions</label>
-        <input type="text" class="form-control border-input" value="25">
+        <input type="text" class="form-control border-input" [(ngModel)]="quantity">
       </div>
     </div>
     <div class="col-md-4">
@@ -38,5 +44,5 @@
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-  <button type="button" class="btn btn-success" (click)="activeModal.close('Close click')">Acheter</button>
+  <button type="button" class="btn btn-success" (click)="buyCours()">Acheter</button>
 </div>

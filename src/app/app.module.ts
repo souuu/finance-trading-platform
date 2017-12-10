@@ -27,6 +27,7 @@ import {OrderModalComponent} from "./order-modal/order-modal.component";
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
+import {OrdersComponent} from "./orders/orders.component";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { LoginComponent } from './login/login.component';
     UpgradeComponent,
     PortefeuilleComponent,
     CoursComponent,
+    OrdersComponent,
     HistoriqueComponent,
     NewsComponent,
     StatsComponent,

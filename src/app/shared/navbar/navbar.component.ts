@@ -2,6 +2,8 @@ import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/cor
 import { ROUTES } from '../../sidebar/sidebar.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {GetUser} from "../../core/user.model";
+import {BusinessService} from "../../core/business.service";
 
 @Component({
     moduleId: module.id,
@@ -15,16 +17,20 @@ export class NavbarComponent implements OnInit{
     private nativeElement: Node;
     private toggleButton;
     private sidebarVisible: boolean;
+    user:GetUser;
 
     @ViewChild("navbar-cmp") button;
 
-    constructor(location:Location, private renderer : Renderer, private element : ElementRef,private router:Router) {
+    constructor(location:Location, private renderer : Renderer, private element : ElementRef,private router:Router,private businessService:BusinessService) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
     }
 
     ngOnInit(){
+        this.businessService.getUser().then(data=> {
+            this.user=data.user;
+        });
         this.listTitles = ROUTES.filter(listTitle => listTitle);
         var navbar : HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];

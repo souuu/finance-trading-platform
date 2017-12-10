@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Cours} from "../core/user.model";
+import {BusinessService} from "../core/business.service";
 declare interface TableData {
     headerRow: string[];
     dataRows: string[][];
@@ -13,24 +15,30 @@ declare interface TableData {
 export class CoursComponent implements OnInit {
 
     public tableData2: TableData;
-  constructor() { }
+    cours:Cours[]=[];
+  constructor(private businessService:BusinessService) { }
 
   ngOnInit() {
+
+      this.businessService.getCours().then(data=> {
+          this.cours=data.cours;
+          for (let i=0;i<this.cours.length;i++){
+              let table=[];
+              table.push(this.cours[i].nom);
+              table.push(this.cours[i].ouverture);
+              table.push(this.cours[i].haut);
+              table.push(this.cours[i].bas);
+              table.push(this.cours[i].volume);
+              table.push(this.cours[i].dernier);
+              table.push(this.cours[i].variation);
+              this.tableData2.dataRows.push(table);
+          }
+
+
+      });
       this.tableData2 = {
-          headerRow: [ 'Nom','Ouverture', '+Haut', '+Bas', 'Volume(Dinars)','Dernier','Veille','Vartiation'],
+          headerRow: [ 'Nom','Ouverture', '+Haut', '+Bas', 'Volume(Dinars)','Dernier','Vartiation'],
           dataRows: [
-              ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-              ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%'],
-              ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-              ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%'],
-              ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-              ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%'],
-              ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-              ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%'],
-              ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-              ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%'],
-              ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-              ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%']
           ]
       };
   }

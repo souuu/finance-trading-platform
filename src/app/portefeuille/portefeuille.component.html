@@ -16,10 +16,14 @@
         <div class="text-center">
           <div class="row">
             <div class="col-md-12" style="padding-top: 20px;padding-bottom: 20px;">
-              <h4 class="title" style="color: green">50.000 DT | +10% </h4>
+              <h4 class="title" style="color: green">{{user.portfoliobalance}} DT | +{{user.portfolioperformance}} </h4>
             </div>
             <div class="col-md-12" style="padding-bottom: 20px;">
-              <button class="btn btn-success">Charger mon compte</button>
+              <button class="btn btn-success" (click)="showInput=true;">Charger mon compte</button>
+            </div>
+            <div class="col-12" *ngIf="showInput" style="margin-bottom: 20px;">
+              <input type="text" placeholder="Montant en DT" [(ngModel)]="somme" name="somme">
+              <button class="btn btn-success" (click)="chargerCompte()">Valider</button>
             </div>
           </div>
         </div>

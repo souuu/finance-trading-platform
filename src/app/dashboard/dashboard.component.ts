@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {OrderModalComponent} from "../order-modal/order-modal.component";
+import {BusinessService} from "../core/business.service";
+import {Cours, GetUser} from "../core/user.model";
+import {History} from "../core/user.model";
 declare interface TableData {
     headerRow: string[];
     dataRows: string[][];
@@ -16,35 +19,64 @@ declare var $:any;
 })
 
 export class DashboardComponent implements OnInit{
-    constructor(private modalService: NgbModal){
+    constructor(private modalService: NgbModal,private businessService:BusinessService){
     }
     public tableData1: TableData;
     public tableData2: TableData;
-    open() {
+    cours:Cours[]=[];
+    history:History[];
+    user:GetUser={};
+    numberCours=0;
+    open(cours:string) {
+        console.log(cours);
         const modalRef = this.modalService.open(OrderModalComponent);
-        modalRef.componentInstance.name = 'World';
+        modalRef.componentInstance.cours = cours;
     }
 
     ngOnInit(){
+        this.businessService.getUser().then(data=> {
+            this.user=data.user;
+        });
+        this.businessService.getOrders().then(data=> {
+            console.log(data);
+            this.numberCours=data.orders.length;
+        });
+        this.businessService.getCours().then(data=> {
+            this.cours=data.cours;
+            for (let i=0;i<5;i++){
+                let table=[];
+                table.push(this.cours[i].nom);
+                table.push(this.cours[i].ouverture);
+                table.push(this.cours[i].haut);
+                table.push(this.cours[i].bas);
+                table.push(this.cours[i].volume);
+                table.push(this.cours[i].dernier);
+                table.push(this.cours[i].variation);
+                this.tableData2.dataRows.push(table);
+            }
+        });
+        this.businessService.getHistory().then(data=> {
+            this.history=data.historiques;
+            for (let i=0;i<data.historiques.length;i++){
+                if (i<5) {
+                    let table=[];
+                    table.push(this.history[i].valeur);
+                    table.push(this.history[i].va);
+                    table.push(this.history[i].type);
+                    table.push(this.history[i].status);
+                    table.push(this.history[i].timestamp);
+                    this.tableData1.dataRows.push(table);
+                }
+            }
+        });
         this.tableData1 = {
-            headerRow: [ 'Valeur','V/A', 'Quantité', 'Type', 'Status'],
+            headerRow: [ 'Valeur','V/A', 'Type', 'Status','Date'],
             dataRows: [
-                ['AMEN BANK','Vente', '25 actions', 'Au marché', 'En attente'],
-                ['BANQUE ATTIJARI DE TUNIS','Vente', '45 actions', 'A cours limité', 'En Exécution'],
-                ['BANQUE DE HABITAT','Achat', '30 actions', 'Au marché', 'En attente'],
-                ['BANQUE NATIONALE AGRICOLE','Achat', '25 actions', 'Au marché', 'En attente']
             ]
         };
         this.tableData2 = {
-            headerRow: [ 'Nom','Ouverture', '+Haut', '+Bas', 'Volume(Dinars)','Dernier','Veille','Vartiation'],
-            dataRows: [
-                ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-                ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%'],
-                ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-                ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%'],
-                ['AMEN BANK','24.85', '24.85', '24.40', '141 513','24.84','24,85','-0.04%'],
-                ['ARTES','6.40', '6.51', '6.40', '19 302','6.51','6,40','+1.72%']
-            ]
+            headerRow: [ 'Nom','Ouverture', '+Haut', '+Bas', 'Volume(Dinars)','Dernier','Vartiation'],
+            dataRows: []
         };
 
         var dataSales = {
